@@ -72,12 +72,20 @@ LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
+include $(CLEAR_VARS)
+LOCAL_MODULE := ramzswap.ko
+LOCAL_MODULE_TAGS := user
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules/2.6.29-cyanogenmod
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
+
 # other kernel modules
 include $(CLEAR_VARS)
 LOCAL_MODULE := auth_rpcgss.ko
 LOCAL_MODULE_TAGS := user
 LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules
+LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules/2.6.29-cyanogenmod
 LOCAL_SRC_FILES := modules/$(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
@@ -85,7 +93,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := cifs.ko
 LOCAL_MODULE_TAGS := user
 LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules
+LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules/2.6.29-cyanogenmod
 LOCAL_SRC_FILES := modules/$(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
@@ -93,7 +101,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := fuse.ko
 LOCAL_MODULE_TAGS := user
 LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules
+LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules/2.6.29-cyanogenmod
 LOCAL_SRC_FILES := modules/$(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
@@ -101,7 +109,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := lockd.ko
 LOCAL_MODULE_TAGS := user
 LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules
+LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules/2.6.29-cyanogenmod
 LOCAL_SRC_FILES := modules/$(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
@@ -109,7 +117,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := nfs_acl.ko
 LOCAL_MODULE_TAGS := user
 LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules
+LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules/2.6.29-cyanogenmod
 LOCAL_SRC_FILES := modules/$(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
@@ -117,7 +125,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := nfs.ko
 LOCAL_MODULE_TAGS := user
 LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules
+LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules/2.6.29-cyanogenmod
 LOCAL_SRC_FILES := modules/$(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
@@ -125,7 +133,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := rpcsec_gss_krb5.ko
 LOCAL_MODULE_TAGS := user
 LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules
+LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules/2.6.29-cyanogenmod
 LOCAL_SRC_FILES := modules/$(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
@@ -133,27 +141,8 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := sunrpc.ko
 LOCAL_MODULE_TAGS := user
 LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules
+LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules/2.6.29-cyanogenmod
 LOCAL_SRC_FILES := modules/$(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := ramzswap.ko
-LOCAL_MODULE_TAGS := user
-LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules
-LOCAL_SRC_FILES := modules/$(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-# the system properties for each device, loaded by init
-file := $(TARGET_OUT)/build.hero.prop
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/build.hero.prop | $(ACP)
-	$(transform-prebuilt-to-target)
-
-file := $(TARGET_OUT)/build.heroc.prop
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/build.heroc.prop | $(ACP)
-	$(transform-prebuilt-to-target)
 
 -include vendor/htc/hero/AndroidBoardVendor.mk
